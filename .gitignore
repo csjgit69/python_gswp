@@ -22,6 +22,7 @@ Thumbs.db
 
 # BlueJ files
 *.ctxt
+*.metadata/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
