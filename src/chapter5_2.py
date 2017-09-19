@@ -24,3 +24,5 @@ while True:
         smallest = num    
 print("Maximum is", largest)
 print("Minimun is", smallest)
+
+a = 'min'[0]
