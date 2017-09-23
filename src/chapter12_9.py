@@ -48,8 +48,6 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import ssl
-import re
-
 
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
@@ -57,22 +55,10 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 
-# fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
-# for line in fhand:
-#     print(line.decode().strip())
-
-
 #url = "http://py4e-data.dr-chuck.net/comments_42.html" #input('Enter - ')
 url = "http://py4e-data.dr-chuck.net/comments_32130.html" #input('Enter - ')
 html = urlopen(url, context=ctx).read()
-# html.parser is the HTML parser included in the standard Python 3 library.
-# information on other HTML parsers is here:
-# http://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser
 soup = BeautifulSoup(html, "html.parser")
-# for soup in html:
-#     print(soup.decode().strip())
-
-# Retrieve all of the anchor tags
 total = 0
 tags = soup('span')
 for tag in tags:
@@ -80,10 +66,5 @@ for tag in tags:
     str = tag.contents[0]
     num = int(str)
     total += num
-    print("foun:",num,"total now:",total)
-#     print('TAG:', tag, "type:", type(tag))
-#     print('URL:', tag.get('href', None))
-#     print('Contents:', tag.contents[0], "type:", type(tag.contents[0]))
-#     print('Attrs:', tag.attrs)
-
+    #print("foun:",num,"total now:",total)
 print("last Total:",total)
