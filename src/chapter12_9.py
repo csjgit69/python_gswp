@@ -71,7 +71,7 @@ count = 7
 position = 18
 
 while count>0:
-    #print("====== To Retrieve:",count, "To Read:", url)
+    print("====== To Retrieve:",count, "To Read:", url)
     count = count - 1
     html = urlopen(url, context=ctx).read()
     soup = BeautifulSoup(html, "html.parser")
