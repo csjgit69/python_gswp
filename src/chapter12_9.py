@@ -1,5 +1,3 @@
-# Welcome C Stuart Johnson from Using Python to Access Web Data
-# 
 # Following Links in Python
 # 
 # In this assignment you will write a Python program that expands on http://www.py4e.com/code3/urllinks.py.
