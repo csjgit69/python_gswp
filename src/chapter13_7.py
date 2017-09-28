@@ -42,26 +42,40 @@ import xml.etree.ElementTree as ET
 urlS = 'http://py4e-data.dr-chuck.net/comments_42.xml'
 urlA = 'http://py4e-data.dr-chuck.net/comments_32132.xml'
 
+serviceurl = 'http://maps.googleapis.com/maps/api/geocode/xml?'
+
 while True:
     address = input('Enter location: ')
     if len(address) < 1:
-        url = urlS
-        print('Retrieving', url)
-        
-#     uh = urllib.request.urlopen(url)
-#     data = uh.read()
-    data = urllib.request.urlopen(url).read()
-    
-    print('Retrieved', len(data), 'characters')
-    print(data.decode())
+        url = urlA
+    else:
+        url = serviceurl + urllib.parse.urlencode({'address': address})
 
+    print('Retrieving', url)
+    #uh = urllib.request.urlopen(url)
+    #data = uh.read()
+    data = urllib.request.urlopen(url).read()
+
+    #print('Retrieved', len(data), 'characters')
+    print(data.decode())
     tree = ET.fromstring(data)
+    
+    counts = tree.findall('comments/comment')
+    #print("Counts:",counts)
+    count = 0
+    for item in counts:
+        count += int(item.find('count').text)
+        print("found:",item.find('count').text)
+    print("fml, this easy?:",count)
 
     results = tree.findall('result')
-    lat = results[0].find('geometry').find('location').find('lat').text
-    lng = results[0].find('geometry').find('location').find('lng').text
-    location = results[0].find('formatted_address').text
-
-    print('lat', lat, 'lng', lng)
-    print(location)
-
+    if (len(address)>1):        
+        print("Results:",results)
+        lat = results[0].find('geometry').find('location').find('lat').text
+        lng = results[0].find('geometry').find('location').find('lng').text
+        location = results[0].find('formatted_address').text
+        print('lat', lat, 'lng', lng)
+        print(location)
+        
+    break
+    
