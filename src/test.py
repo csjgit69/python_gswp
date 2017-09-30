@@ -97,3 +97,39 @@ print(f2)
 
 print(chomp(friends))
 print(friends)
+
+print("\n===============")
+print("little class example, private var and call to increment it")
+
+class PartyAnimal:
+    x = 0
+    name = ""  
+    def __init__(self, nam):
+        self.name = nam
+        print(self.name,"constructed")        
+    def party(self):
+        self.x = self.x + 1
+        print(self.name, "party count",self.x)    
+    def __del__(self):
+        print(self.name,"destructed after",self.x,"parties")
+
+class FootballFan(PartyAnimal):
+    points = 0
+    def touchdown(self):
+        self.points = self.points + 7
+        self.party()
+        print(self.name,"points",self.points)
+            
+            
+joe = PartyAnimal("Joe")
+jan = PartyAnimal("Jan")
+bob = PartyAnimal("Bob")
+#print(dir(an))
+joe.party()
+jan.party()
+joe.party()
+joe.party()
+joe = 42
+print("joe contains",joe)
+print("===============")
+
