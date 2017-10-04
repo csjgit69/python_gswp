@@ -48,8 +48,6 @@ hs_err_pid*
 # Logs and databases #
 ######################
 *.log
-*.sql
-*.sqlite
 
 # Packages #
 ############

@@ -1,6 +1,7 @@
 import platform
 import sys
 import datetime
+from pip._vendor.requests.packages.urllib3.util.connection import select
 
 if __name__ == '__main__':
     print("_____Hello World_____")
@@ -117,19 +118,50 @@ class FootballFan(PartyAnimal):
     points = 0
     def touchdown(self):
         self.points = self.points + 7
-        self.party()
         print(self.name,"points",self.points)
+        self.party()
             
-            
+an = PartyAnimal("an")
+print("*** HERE ***")            
+PartyAnimal.party(an)
+print("*** HERE ***")            
 joe = PartyAnimal("Joe")
-jan = PartyAnimal("Jan")
+jan = FootballFan("Jan")
 bob = PartyAnimal("Bob")
+
 #print(dir(an))
 joe.party()
-jan.party()
+jan.touchdown()
 joe.party()
 joe.party()
+jan.touchdown()
 joe = 42
 print("joe contains",joe)
 print("===============")
+
+# SQL test commands
+# CREATE TABLE Users (
+#   name VARCHAR(128),
+#   email VARCHAR(128)
+# )
+# INSERT INTO Users (name, email) VALUES ('Brian Lawrence','B.Lawrence@F5.com')
+# DELETE FROM Users WHERE email='B.Lawrence@F5.com'
+# UPDATE Users SET name='Al Danielson' WHERE email='a.danielson@F5.com'
+insert into artist (name) values (Led Zepplin)
+insert into Album (title, artist_id) values ('IV', 1)
+insert into Track (title, rating, len, count, album_id, genre_id) values ('Black Dog', 5, 297, 0, 2, 1)
+select Album.title, Artist.name from Album join Artist on Album.artist_id = Artist.id
+
+select Track.title, Artist.name from 
+    Track join Artist
+    on Track.artist_id = Artist.id 
+
+
+select Track.title, Artist.name, Album.title, Genre.name from 
+    Track join Genre join Album join Artist
+    on Track.genre_id = Genre.id 
+    and Album.album_id = Artist.id 
+    and Track.artist_id = Artist.id 
+
+
 
